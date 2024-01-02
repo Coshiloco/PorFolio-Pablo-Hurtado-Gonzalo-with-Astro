@@ -1,6 +1,6 @@
 ---
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
+import NextJS from './icons/NextJS.astro';
+import Tailwind from './icons/Tailwind.astro';
 
 const TAGS = {
   NEXT: {
@@ -21,9 +21,7 @@ const PROJECTS = [
       "The app aims to solve the challenge of choosing movies or TV shows for a group. It's hard to reach a consensus since people have seen different things and have varied preferences. The app allows users to add movies they've seen or want to watch. Its sophisticated algorithm filters this information for each group member, recommending a movie that everyone will enjoy for get-togethers or family gatherings.",
     link: "https://svgl.vercel.app/",
     github: "https://github.com/apptolast/FamilyFilmApp.git",
-    image: "/projects/FamilyFilmAppScreenOne.webp",
-    imageTwo: "/projects/FamilyFilmAppScreenTwo.webp",
-    imageThree: "/projects/FamilyFilmAppScreenThree.webp",
+    imageList: ["/projects/FamilyFilmAppScreenOne.webp","/projects/FamilyFilmAppScreenTwo.webp","/projects/FamilyFilmAppScreenThree.webp"],
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
   {
@@ -32,9 +30,7 @@ const PROJECTS = [
       "WildBicycle is not just an app; it’s your ultimate companion for outdoor adventures. Inspired by the functionality of Strava, WildBicycle elevates the experience of cycling, running, and skating to new heights. With a keen focus on the community aspect, our app encourages connectivity and camaraderie among outdoor enthusiasts.",
     link: "https://svgl.vercel.app/",
     github: "https://github.com/Coshiloco/WildBicycle.git",
-    image: "/projects/FamilyFilmAppScreenOne.webp",
-    imageTwo: "/projects/FamilyFilmAppScreenTwo.webp",
-    imageThree: "/projects/FamilyFilmAppScreenThree.webp",
+    imageList: [],
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
   {
@@ -43,61 +39,45 @@ const PROJECTS = [
       "HabitDiary is a sleek task management app designed to help you establish and track your daily, weekly, and monthly plans with ease. With its intuitive interface, you can swiftly organize your schedule and stay on top of your tasks.",
     link: "https://svgl.vercel.app/",
     github: "https://github.com/Coshiloco/HabitDiary.git",
-    image: "/projects/FamilyFilmAppScreenOne.webp",
-    imageTwo: "/projects/FamilyFilmAppScreenTwo.webp",
-    imageThree: "/projects/FamilyFilmAppScreenThree.webp",
+    imageList: ["/projects/HabitDiaryOne.webp"],
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   }
-]
+];
 ---
 
 
 <div class="flex flex-col items-center">
-  {PROJECTS.map(({ image, imageTwo, imageThree, title, description, github,  tags }) => (
+  {PROJECTS.map((project) => (
     <article class="w-full p-4">
       <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-        {title}
+        {project.title}
       </h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
+      <p class="text-lg mb-4 text-pretty">{project.description}</p>
+      <ul class="flex gap-x-2 flex-wrap mb-2">
+        {project.tags.map((tag) => (
+          // The `key` prop is removed since it's not needed in Astro
+          <li class={`rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}>
+            <tag.icon class="w-4 h-4" />
+            {tag.name}
           </li>
         ))}
       </ul>
-      <div class="flex flex-col items-center">
-        <img
-          loading="lazy"
-          class="rounded shadow-2xl shadow-white/10 object-contain w-1/2 h-auto mb-4"
-          src={image}
-          alt={`Captura de pantalla del proyecto ${title}`}
-        />
-        <img
-          loading="lazy"
-          class="rounded shadow-2xl shadow-white/10 object-contain w-1/2 h-auto mb-4"
-          src={imageTwo}
-          alt={`Captura de pantalla del proyecto ${title}`}
-        />
-        <img
-          loading="lazy"
-          class="rounded shadow-2xl shadow-white/10 object-contain w-1/2 h-auto mb-4"
-          src={imageThree}
-          alt={`Captura de pantalla del proyecto ${title}`}
-        />
-        {/* Asumiendo que puedas tener más de una imagen por proyecto */}
-        {/* Agrega más elementos <img> aquí si hay más imágenes para mostrar */}
-      </div>
-      <a href={github} target="_blank" rel="noopener noreferrer" class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+      {project.imageList.length > 0 && (
+        <div class="grid grid-cols-3 gap-4 mb-4">
+          {project.imageList.map((imageSrc) => (
+            // Removed the `key` prop here as well
+            <img
+              loading="lazy"
+              class="rounded shadow-lg object-contain h-auto max-w-full"
+              src={imageSrc}
+              alt={`Captura de pantalla del proyecto ${project.title}`}
+            />
+          ))}
+        </div>
+      )}
+      <a href={project.github} target="_blank" rel="noopener noreferrer" class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
         Saber más...
       </a>
     </article>
   ))}
 </div>
-
-
