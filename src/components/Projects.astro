@@ -26,12 +26,34 @@ const PROJECTS = [
     imageThree: "/projects/FamilyFilmAppScreenThree.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
+  {
+    title: "WildBycicle",
+    description:
+      "WildBicycle is not just an app; it’s your ultimate companion for outdoor adventures. Inspired by the functionality of Strava, WildBicycle elevates the experience of cycling, running, and skating to new heights. With a keen focus on the community aspect, our app encourages connectivity and camaraderie among outdoor enthusiasts.",
+    link: "https://svgl.vercel.app/",
+    github: "https://github.com/Coshiloco/WildBicycle.git",
+    image: "/projects/FamilyFilmAppScreenOne.webp",
+    imageTwo: "/projects/FamilyFilmAppScreenTwo.webp",
+    imageThree: "/projects/FamilyFilmAppScreenThree.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "HabitDiary",
+    description:
+      "HabitDiary is a sleek task management app designed to help you establish and track your daily, weekly, and monthly plans with ease. With its intuitive interface, you can swiftly organize your schedule and stay on top of your tasks.",
+    link: "https://svgl.vercel.app/",
+    github: "https://github.com/Coshiloco/HabitDiary.git",
+    image: "/projects/FamilyFilmAppScreenOne.webp",
+    imageTwo: "/projects/FamilyFilmAppScreenTwo.webp",
+    imageThree: "/projects/FamilyFilmAppScreenThree.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  }
 ]
 ---
 
 
 <div class="flex flex-col items-center">
-  {PROJECTS.map(({ image, imageTwo, imageThree, title, description, tags }) => (
+  {PROJECTS.map(({ image, imageTwo, imageThree, title, description, github,  tags }) => (
     <article class="w-full p-4">
       <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
         {title}
@@ -52,28 +74,28 @@ const PROJECTS = [
       <div class="flex flex-col items-center">
         <img
           loading="lazy"
-          class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
+          class="rounded shadow-2xl shadow-white/10 object-contain w-1/2 h-auto mb-4"
           src={image}
           alt={`Captura de pantalla del proyecto ${title}`}
         />
         <img
           loading="lazy"
-          class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
+          class="rounded shadow-2xl shadow-white/10 object-contain w-1/2 h-auto mb-4"
           src={imageTwo}
           alt={`Captura de pantalla del proyecto ${title}`}
         />
         <img
           loading="lazy"
-          class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
+          class="rounded shadow-2xl shadow-white/10 object-contain w-1/2 h-auto mb-4"
           src={imageThree}
           alt={`Captura de pantalla del proyecto ${title}`}
         />
         {/* Asumiendo que puedas tener más de una imagen por proyecto */}
         {/* Agrega más elementos <img> aquí si hay más imágenes para mostrar */}
       </div>
-      <button class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+      <a href={github} target="_blank" rel="noopener noreferrer" class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
         Saber más...
-      </button>
+      </a>
     </article>
   ))}
 </div>
