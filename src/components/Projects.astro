@@ -22,6 +22,8 @@ const PROJECTS = [
     link: "https://svgl.vercel.app/",
     github: "https://github.com/apptolast/FamilyFilmApp.git",
     image: "/projects/FamilyFilmAppScreenOne.webp",
+    imageTwo: "/projects/FamilyFilmAppScreenTwo.webp",
+    imageThree: "/projects/FamilyFilmAppScreenThree.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
 ]
@@ -29,7 +31,7 @@ const PROJECTS = [
 
 
 <div class="flex flex-col items-center">
-  {PROJECTS.map(({ image, title, description, tags }) => (
+  {PROJECTS.map(({ image, imageTwo, imageThree, title, description, tags }) => (
     <article class="w-full p-4">
       <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
         {title}
@@ -52,6 +54,18 @@ const PROJECTS = [
           loading="lazy"
           class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
           src={image}
+          alt={`Captura de pantalla del proyecto ${title}`}
+        />
+        <img
+          loading="lazy"
+          class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
+          src={imageTwo}
+          alt={`Captura de pantalla del proyecto ${title}`}
+        />
+        <img
+          loading="lazy"
+          class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
+          src={imageThree}
           alt={`Captura de pantalla del proyecto ${title}`}
         />
         {/* Asumiendo que puedas tener más de una imagen por proyecto */}
