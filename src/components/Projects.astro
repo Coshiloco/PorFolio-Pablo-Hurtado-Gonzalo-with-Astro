@@ -16,20 +16,21 @@ const TAGS = {
 }
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "Family Film App",
     description:
-      "Created from scratch with Next.js and Tailwind CSS. It's a library with SVG logos from the most popular brands. Optimized for SEO and performance.",
+      "The app aims to solve the challenge of choosing movies or TV shows for a group. It's hard to reach a consensus since people have seen different things and have varied preferences. The app allows users to add movies they've seen or want to watch. Its sophisticated algorithm filters this information for each group member, recommending a movie that everyone will enjoy for get-togethers or family gatherings.",
     link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
+    github: "https://github.com/apptolast/FamilyFilmApp.git",
+    image: "/projects/FamilyFilmAppScreenOne.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
 ]
 ---
 
-{
-  PROJECTS.map(({ image, title, description, tags }) => (
-    <article>
+
+<div class="flex flex-col items-center">
+  {PROJECTS.map(({ image, title, description, tags }) => (
+    <article class="w-full p-4">
       <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
         {title}
       </h3>
@@ -46,12 +47,21 @@ const PROJECTS = [
           </li>
         ))}
       </ul>
-      <img
-        loading="lazy"
-        class="rounded shadow-2xl shadow-white/10 aspect-video"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
-      />
+      <div class="flex flex-col items-center">
+        <img
+          loading="lazy"
+          class="rounded shadow-2xl shadow-white/10 max-w-full h-auto mb-4"
+          src={image}
+          alt={`Captura de pantalla del proyecto ${title}`}
+        />
+        {/* Asumiendo que puedas tener más de una imagen por proyecto */}
+        {/* Agrega más elementos <img> aquí si hay más imágenes para mostrar */}
+      </div>
+      <button class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+        Saber más...
+      </button>
     </article>
-  ))
-}
+  ))}
+</div>
+
+
