@@ -1,19 +1,12 @@
 ---
 import IconsProject from './IconsProject.astro';
 import Android from './icons/Android.astro';
-import Tailwind from './icons/Tailwind.astro';
 
 const TAGS = {
   NEXT: {
     name: "Android",
-    class: "bg-black text-white",
     icon: Android,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
+  }
 }
 const PROJECTS = [
   {
@@ -23,7 +16,7 @@ const PROJECTS = [
     link: "https://svgl.vercel.app/",
     github: "https://github.com/apptolast/FamilyFilmApp.git",
     imageList: ["/projects/FamilyFilmAppScreenOne.webp","/projects/FamilyFilmAppScreenTwo.webp","/projects/FamilyFilmAppScreenThree.webp"],
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.NEXT],
   },
   {
     title: "WildBycicle",
@@ -32,7 +25,7 @@ const PROJECTS = [
     link: "https://svgl.vercel.app/",
     github: "https://github.com/Coshiloco/WildBicycle.git",
     imageList: [],
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.NEXT],
   },
   {
     title: "HabitDiary",
@@ -41,41 +34,44 @@ const PROJECTS = [
     link: "https://svgl.vercel.app/",
     github: "https://github.com/Coshiloco/HabitDiary.git",
     imageList: ["/projects/HabitDiaryOne.webp"],
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.NEXT],
   }
 ];
 ---
 
 <div class="flex flex-col items-center">
   {PROJECTS.map((project) => (
-    <article class="w-full p-4">
-      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+    <article class="w-full p-4 mb-8">
+      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-4">
         {project.title}
       </h3>
-      <p class="text-lg mb-4 text-pretty">{project.description}</p>
-      <ul class="flex gap-x-2 flex-wrap mb-2">
+      <p class="text-lg mb-4">{project.description}</p>
+      <div class="flex gap-x-4 flex-wrap mb-4">
         {project.tags.map((tag) => (
-          <IconsProject href="#">
-            {/* Use the imported Astro component directly */}
-            {tag.name}
-          </IconsProject>
+          <nav class="flex gap-4 mt-8 flex-wrap mb-6"> 
+            <IconsProject>
+              <tag.icon class="w-14 h-6" />
+              <span class="text-sm text-white">{tag.name}</span>
+            </IconsProject>
+          </nav>
         ))}
-      </ul>
+      </div>
       {project.imageList.length > 0 && (
-        <div class="grid grid-cols-3 gap-4 mb-4">
+        <div class="grid grid-cols-3 gap-6 mb-4">
           {project.imageList.map((imageSrc) => (
             <img
               loading="lazy"
-              class="rounded shadow-lg object-contain h-auto max-w-full"
+              class="rounded shadow-lg object-cover h-auto max-w-full mb-6"
               src={imageSrc}
               alt={`Captura de pantalla del proyecto ${project.title}`}
             />
           ))}
         </div>
       )}
-      <a href={project.github} target="_blank" rel="noopener noreferrer" class="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+      <a href={project.github} target="_blank" rel="noopener noreferrer" class="mt-8 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
         Saber más...
       </a>
     </article>
   ))}
 </div>
+
