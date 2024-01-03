@@ -1,4 +1,5 @@
 ---
+import IconsProject from './IconsProject.astro';
 import Android from './icons/Android.astro';
 import Tailwind from './icons/Tailwind.astro';
 
@@ -54,11 +55,10 @@ const PROJECTS = [
       <p class="text-lg mb-4 text-pretty">{project.description}</p>
       <ul class="flex gap-x-2 flex-wrap mb-2">
         {project.tags.map((tag) => (
-          <li class={`rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}>
+          <IconsProject href="#">
             {/* Use the imported Astro component directly */}
-            <tag.icon class="w-4 h-4" />
             {tag.name}
-          </li>
+          </IconsProject>
         ))}
       </ul>
       {project.imageList.length > 0 && (
